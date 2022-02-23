@@ -5782,7 +5782,7 @@
 	  keywords += ' unsafe use where while async await dyn';
 	
 	  var reserved = 'abstract become box do final macro override priv typeof unsized virtual yield try';
-	  var types = 'i8 i16 i32 i62 u8 u16 u32 u64 bool String';
+	  var types = 'i8 i16 i32 i62 u8 u16 u32 u64 bool String Vec HashMap Set';
 
 	  var weak = 'macro_rules union';
 
