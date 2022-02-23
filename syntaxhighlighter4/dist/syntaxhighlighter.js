@@ -5781,6 +5781,7 @@
 	  keywords += ' unsafe use where while async await dyn';
 	
 	  var reserved = 'abstract become box do final macro override priv typeof unsized virtual yield try';
+	  var types = 'i8 i16 i32 i62 u8 u16 u32 u64 bool String';
 
 	  var weak = 'macro_rules union';
 
@@ -5796,6 +5797,15 @@
 	  }, {
 	    regex: regexLib.multiLineCComments,
 	    css: 'comments'
+	  }, {
+	    regex: /^ *#.*/gm,
+	    css: 'preprocessor'
+	  }, {
+	    regex: /^#.*"/gm,
+	    css: 'preprocessor'
+	  }, {
+	    regex: new RegExp(this.getKeywords(types), 'gm'),
+	    css: 'constants'
 	  }, {
 	    regex: new RegExp(this.getKeywords(reserved), 'gm'),
 	    css: 'color2'
