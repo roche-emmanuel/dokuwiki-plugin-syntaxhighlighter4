@@ -5821,7 +5821,7 @@
 	    regex: /\s*fn\s+[\w<>']+\s*\(/g,  // functions matching
 	    func: fixFunctions
 	  }, {
-	    regex: /\s*(\w+!)\(/g,  // macros matching
+	    regex: /\s*(\w+!)(\(|\[)/g,  // macros matching
 	    func: fixMacros
 	  }, {
 	    regex: new RegExp(this.getKeywords(types), 'gm'),
