@@ -1,7 +1,7 @@
-base   @RELEASE_BASE@
-author @RELEASE_AUTHOR@
-email  @RELEASE_EMAIL@
-date   @RELEASE_DATE@
-name   @RELEASE_NAME@
-desc   @RELEASE_DESC@
-url    @RELEASE_URL@
+base   syntaxhighlighter4
+author ultimamanu
+email  roche.emmanuel@gmail.com
+date   2022-02-23
+name   SyntaxHighlighter4 Plugin
+desc   Alternative to GeSHi server-side code highlighting with client-side SyntaxHighlighter 4 by Alex Gorbatchev
+url    https://github.com/roche-emmanuel/dokuwiki-plugin-syntaxhighlighter4

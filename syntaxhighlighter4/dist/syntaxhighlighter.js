@@ -65,7 +65,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
+
 	var _core = __webpack_require__(1);
 	
 	Object.keys(_core).forEach(function (key) {
@@ -420,7 +420,7 @@
 	registerBrush(__webpack_require__(58));
 	
 	registerBrush(__webpack_require__(59));
-
+	
 	registerBrush(__webpack_require__(63)); // rust
 	
 	/*
@@ -5776,8 +5776,14 @@
 	var regexLib = __webpack_require__(3).commonRegExp;
 	
 	function Brush() {
-	  var keywords = 'break case catch class continue ' + 'default delete do else enum export extends false  ' + 'for function if implements import in instanceof ' + 'interface let new null package private protected ' + 'static return super switch ' + 'this throw true try typeof var while with yield' + ' any bool declare get module never number public readonly set string'; // TypeScript-specific, everything above is common with JavaScript
+	  var keywords = 'as break const continue crate else enum extern false fn for if impl in let loop';
+	  keywords += ' match mod move mut pub ref return self Self static struct super trait true type';
+	  keywords += ' unsafe use where while async await dyn';
 	
+	  var reserved = 'abstract become box do final macro override priv typeof unsized virtual yield try';
+
+	  var weak = 'macro_rules union';
+
 	  this.regexList = [{
 	    regex: regexLib.multiLineDoubleQuotedString,
 	    css: 'string'
@@ -5790,6 +5796,12 @@
 	  }, {
 	    regex: regexLib.multiLineCComments,
 	    css: 'comments'
+	  }, {
+	    regex: new RegExp(this.getKeywords(reserved), 'gm'),
+	    css: 'color2'
+	  }, {
+	    regex: new RegExp(this.getKeywords(weak), 'gm'),
+	    css: 'color3'
 	  }, {
 	    regex: new RegExp(this.getKeywords(keywords), 'gm'),
 	    css: 'keyword'
