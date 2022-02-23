@@ -5775,7 +5775,7 @@
 	var BrushBase = __webpack_require__(22);
 	var regexLib = __webpack_require__(3).commonRegExp;
 	var Match = __webpack_require__(5).Match;
-	
+
 	function Brush() {
 	  var keywords = 'as break const continue crate else enum extern false fn for if impl in let loop';
 	  keywords += ' match mod move mut pub ref return self Self static struct super trait true type';
@@ -5787,8 +5787,16 @@
 	  var weak = 'macro_rules union';
 
 	  function fixMacros(match, regexInfo) {
-	    var css = 'color2';
+	    var css = 'color3';
 	    return [new Match(match[0].substring(0, match[0].length-1), match.index, css)];
+	  }
+
+	  function fixFunctions(match, regexInfo) {
+	    var css = 'functions';
+		var mstr = match[0].trim().substring(2).trim();
+		mstr = mstr.substring(0, mstr.length-1);
+		var offset = match[0].indexOf(mstr);
+	    return [new Match(mstr, match.index+offset, css)];
 	  }
 
 	  this.regexList = [{
@@ -5809,6 +5817,9 @@
 	  }, {
 	    regex: /^#.*"/gm,
 	    css: 'preprocessor'
+	  }, {
+	    regex: /\s*fn\s+[\w<>']+\s*\(/g,  // functions matching
+	    func: fixFunctions
 	  }, {
 	    regex: /\s*(\w+!)\(/g,  // macros matching
 	    func: fixMacros
