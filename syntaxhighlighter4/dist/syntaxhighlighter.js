@@ -5774,6 +5774,7 @@
 	
 	var BrushBase = __webpack_require__(22);
 	var regexLib = __webpack_require__(3).commonRegExp;
+	var Match = __webpack_require__(5).Match;
 	
 	function Brush() {
 	  var keywords = 'as break const continue crate else enum extern false fn for if impl in let loop';
@@ -5784,6 +5785,11 @@
 	  var types = 'i8 i16 i32 i62 u8 u16 u32 u64 bool String';
 
 	  var weak = 'macro_rules union';
+
+	  function fixMacros(match, regexInfo) {
+	    var css = 'color2';
+	    return [new Match(match[0].substring(0, match[0].length-1), match.index, css)];
+	  }
 
 	  this.regexList = [{
 	    regex: regexLib.multiLineDoubleQuotedString,
@@ -5803,6 +5809,9 @@
 	  }, {
 	    regex: /^#.*"/gm,
 	    css: 'preprocessor'
+	  }, {
+	    regex: /\s*(\w+!)\(/g,  // macros matching
+	    func: fixMacros
 	  }, {
 	    regex: new RegExp(this.getKeywords(types), 'gm'),
 	    css: 'constants'
