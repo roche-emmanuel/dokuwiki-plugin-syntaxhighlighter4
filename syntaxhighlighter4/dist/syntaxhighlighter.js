@@ -5805,7 +5805,7 @@
 	  }, {
 	    // regex: regexLib.multiLineSingleQuotedString,
 		// Only one symbol in single quotes:
-	    regex: /'^[']'/,
+	    regex: /'[^']'/g,
 	    css: 'string'
 	  }, {
 	    regex: regexLib.singleLineCComments,
